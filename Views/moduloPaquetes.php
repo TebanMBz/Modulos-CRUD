@@ -22,10 +22,10 @@
                 </div>
                 <div class="row">
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarPaquetes.php">Paquetes</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Paquetes/listarPaquetes.php">Paquetes</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarEmpleados.php">Empleados</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Usuarios/Empleados/listarEmpleados.php">Empleados</a>
                     </div>
                 </div>
             </div>

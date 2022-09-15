@@ -22,16 +22,16 @@
                 </div>
                 <div class="row">
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarPedidos.php">Pedidos</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Pedidos/Pedidos/listarPedidos.php">Pedidos</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarClientes.php">Clientes</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Usuarios/Clientes/listarClientes.php">Clientes</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarBeneficiarios.php">Beneficiarios</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Pedidos/Beneficiarios/listarBeneficiarios.php">Beneficiarios</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarAbonos.php">Abonos</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Pedidos/Abonos/listarAbonos.php">Abonos</a>
                     </div>
                 </div>
             </div>

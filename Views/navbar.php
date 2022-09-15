@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="Assets/Bootstrap/css/bootstrap.min.css">
 </head>
 
-<body class="bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-primary">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold text-muted fs-3" href="navbar.php">TuristiK</a>
             <div class="collapse navbar-collapse">

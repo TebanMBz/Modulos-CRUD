@@ -22,16 +22,16 @@
                 </div>
                 <div class="row">
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarRoles.php">Roles</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Usuarios/Roles/listarRoles.php">Roles</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarUsuarios.php">Usuarios</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Usuarios/Usuarios/listarUsuarios.php">Usuarios</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarEmpleados.php">Empleados</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Usuarios/Empleados/listarEmpleados.php">Empleados</a>
                     </div>
                     <div class="col d-grid">
-                        <a class="btn btn-outline-secondary" href="listarClientes.php">Clientes</a>
+                        <a class="btn btn-outline-secondary" href="../Controller/Usuarios/Clientes/listarClientes.php">Clientes</a>
                     </div>
                 </div>
             </div>
