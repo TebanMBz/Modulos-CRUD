@@ -31,12 +31,10 @@
                         <th>Apellido</th>
                         <th>Documento</th>
                         <th>Teléfono</th>
-                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                     <tr>
-                        <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>
