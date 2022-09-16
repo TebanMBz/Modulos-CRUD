@@ -1,3 +1,21 @@
+<?php
+require '../../Model/bd.php';
+
+    $db = new Database();
+    $connection = $db->connect();
+
+    $query=$connection->prepare("SELECT * FROM paquetes");
+    $query->execute();
+    $paquetes=$query->fetchAll(PDO::FETCH_ASSOC);
+ 
+    // foreach($libros as $key=>$libro){
+    //     echo $libro["titulo"];
+    //     echo $libro["autor"];
+    //     echo $libro["ano"];
+    //     echo $libro["ano"];
+    // }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,30 +35,31 @@
             </div>
             <a href="../../Views/moduloPaquetes.php"><img src="../../Views/Assets/img/regresar.png" width="40px" alt="regresar"></a>
         </div>
-        <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
             <div class="container-fluid border border-primary p-3">
                 <div class="text-center text-primary mb-3">
                     <h3>INFORMACIÓN PAQUETES</h3>
                 </div>
+                
+        <?php foreach($paquetes as $key=>$paquetes){ ?>
                 <div class="container w-75 mb-4 rounded shadow border border-secondary rounded">
                     <div class="container p-4 pt-2">
                         <div class="text-center text-primary">
-                            <h3>Santa Rosa de Osos</h3>
+                            <h3><?php echo $paquetes["nombre"] ?></h3>
                             <!--AGREGAR EL NOMBRE DEL PAQUETE-->
                         </div>
                         <div class="row  border border-primary rounded">
                             <div class="col text-muted p-3">
-                                <h5>ID paquete: </h5>
-                                <h6>Nombre: </h6>
-                                <h6>Destino: </h6>
-                                <h6>Lugar de Encuentro: </h6>
-                                <h6>Fecha de Partida: </h6>
-                                <h6>Fecha de Regreso: </h6>
-                                <h6>Cupos: </h6>
-                                <h6>Precio Adultos: </h6>
-                                <h6>Precio Niños: </h6>
-                                <h6>Estado: </h6>
-                                <h6 class="mb-0">Descripción: </h6>
+                                <h5>ID paquete: <?php echo $paquetes["id_paquete"] ?> </h5>
+                                <h6>Destino:  <?php echo $paquetes["destino"] ?></h6>
+                                <h6>Lugar de Encuentro:  <?php echo $paquetes["lugar_encuentro"] ?></h6>
+                                <h6>Fecha de Partida: <?php echo $paquetes["fecha_partida"] ?> </h6>
+                                <h6>Fecha de Regreso: <?php echo $paquetes["fecha_regreso"] ?> </h6>
+                                <h6>Cupos: <?php echo $paquetes["cupos"] ?></h6>
+                                <h6>Precio Adultos: <?php echo $paquetes["precio_adulto"] ?> </h6>
+                                <h6>Precio Niños:  <?php echo $paquetes["precio_nino"] ?></h6>
+                                <h6>Estado:  <?php echo $paquetes["estado"] ?></h6>
+                                <h6 class="mb-0">Descripción: <?php echo $paquetes["descripcion"] ?></h6>
                             </div>
                             <div class="col row">
                                 <div class="col-1 p-0 text-center mt-2">
@@ -50,12 +69,13 @@
                                     <a href="../../Views/moduloPaquetes.php"><img src="../../Views/Assets/img/eliminar.png" width="35px" alt="eliminar"></a>
                                 </div>
                                 <div class="col-11 bg-secondary d-flex justify-content-center align-items-center rounded">
-                                    <img src="" width="350px" alt="">
+                                    <img src=" <?php echo $paquetes["img_url"] ?>" width="350px" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php } ?>  
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="text-primary me-2">
                         <h5 class="mb-0">Añadir Paquete</h5>
