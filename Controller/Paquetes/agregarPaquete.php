@@ -1,4 +1,68 @@
-<?php ?>
+<?php
+require '../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$bandera=false;
+
+if(isset($_POST['submit'])){
+
+    $nombre = $_POST['nombre'];
+    $destino = $_POST['destino'];    
+    $cupos = $_POST['cupos'];
+    $lugar_encuentro = $_POST["lugar_encuentro"];
+    $fec_Partida = $_POST["fec_Partida"];
+    $fec_Regreso = $_POST["fec_Regreso"];
+    $precio_adulto = $_POST["precio_adulto"];
+    $precio_nino = $_POST["precio_nino"];
+    $id_empleado = $_POST["id_empleado"];
+    $estado = $_POST["estado"];
+    $descripcion = $_POST['descripcion'];
+
+
+    $img_url=$_FILES['img_url']['name'];
+    $archivo=$_FILES['img_url']['tmp_name'];
+    $ruta="fotosPaquetes";
+
+$ruta=$ruta."/".$img_url;
+
+    move_uploaded_file($archivo,$ruta);
+
+    
+
+    $consulta  = $connection -> prepare("INSERT INTO `paquetes` (`id_paquete`, `id_empleado`, `nombre`, `destino`, `descripcion`, `estado`, `lugar_encuentro`, `fecha_partida`, `fecha_regreso`, `img_url`, `cupos`, `precio_adulto`, `precio_nino`)
+    VALUES (' ',  :id_empleado, :nombre, :destino, :descripcion, :estado, :lugar_encuentro, :fec_Partida, :fec_Regreso, :ruta, :cupos, :precio_adulto, :precio_nino)");
+
+
+       $resultado = $consulta->execute(
+              [
+              'id_empleado'=>$id_empleado,
+              'nombre'=>$nombre,
+              'destino'=>$destino,
+              'descripcion'=>$descripcion,
+              'estado'=>$estado,
+              'lugar_encuentro'=>$lugar_encuentro,
+              'fec_Partida'=>$fec_Partida,
+              'fec_Regreso'=>$fec_Regreso,
+              'img_url' => $ruta,
+              'cupos' => $cupos,
+              'precio_adulto'=>$precio_adulto,
+              'precio_nino'=>$precio_nino
+              ]
+
+       );
+
+    
+
+       if ($resultado){
+              $bandera=true;
+       }
+       
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +86,7 @@
             <div class="container w-75">
 
                 <!--FORMULARIO-->
-                <form class=" shadow p-4 rounded border border-primary" action="agregarPaquetes.php" method="POST">
+                <form class=" shadow p-4 rounded border border-primary" action="agregarPaquete.php" method="POST">
                     <div class="text-center text-primary">
                         <h3>Agregar Paquete</h3>
                         <hr>
@@ -47,7 +111,7 @@
                     <div class="row mb-3">
                         <div class="col form-group">
                             <label for="lugar_Encuentro" class="form-label text-secondary">Lugar de encuentro</label>
-                            <input type="text" class="form-control " name="lugar_Encuentro" placeholder="Ingrese el lugar de encuentro">
+                            <input type="text" class="form-control " name="lugar_encuentro" placeholder="Ingrese el lugar de encuentro">
                         </div>
                         <div class="col form-group">
                             <label for="fec_Partida" class="form-label text-secondary">Fecha de Partida</label>
@@ -61,7 +125,7 @@
                     <div class="row mb-3">
                         <div class="col form-group">
                             <label for="img_Paquete" class="form-label text-secondary">Imagen del Paquete</label>
-                            <input type="file" class="form-control text-secondary" name="img_Paquete">
+                            <input type="file" class="form-control text-secondary" name="img_url">
                         </div>
                         <div class="col row">
                             <div class="col form-group">
@@ -76,10 +140,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col form-group">
-                            <label for="id_Empleado" class="form-label text-secondary">Guía Turístico</label>
+                            <label for="id_empleado" class="form-label text-secondary">Guía Turístico</label>
                             <div class="input-group">
-                                <label for="id_Empleado" class="input-group-text">Guías Turístico</label>
-                                <select name="id_Empleado" class="form-select">
+                                <label for="id_empleado" class="input-group-text">Guías Turístico</label>
+                                <select name="id_empleado" class="form-select">
                                     <option selected disabled>Selecciona un Guía Turístico</option>
                                     <option value="1"><?php ?></option>
                                     <option value="2"><?php ?></option>
@@ -102,7 +166,7 @@
                     <div class="row mb-3">
                         <div class="form-group">
                             <label for="descripción" class="form-label text-secondary">Descripción</label>
-                            <textarea class="form-control" name="descripción" rows="3" placeholder="Redacta una breve descripción acerca del paquete y los servicios del mismo..."></textarea>
+                            <textarea class="form-control" name="descripcion" rows="3" placeholder="Redacta una breve descripción acerca del paquete y los servicios del mismo..."></textarea>
                         </div>
                     </div>
                     <div class="d-grid">
@@ -111,6 +175,9 @@
                 </form>
                 <!--CIERRE FORMULARIO-->
 
+
+
+                    
             </div>
         </div>
     </div>

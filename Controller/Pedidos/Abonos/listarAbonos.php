@@ -27,7 +27,6 @@
                     <tr class="text-center">
                         <th>ID_Abono</th>
                         <th>ID_Pedido</th>
-                        <th>Cuotas</th>
                         <th>Monto</th>
                         <th>IMG</th>
                         <th>Fecha</th>
@@ -36,7 +35,6 @@
                         <th>Eliminar</th>
                     </tr>
                     <tr>
-                        <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>

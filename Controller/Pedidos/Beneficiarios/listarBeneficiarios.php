@@ -25,15 +25,21 @@
                 </div>
                 <table class="table table-light table-striped-columns border border-primary">
                     <tr class="text-center">
+                        <th>ID_Pedido</th>
                         <th>ID_Beneficiario</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Documento</th>
                         <th>Fecha_Nac</th>
+                        <th>Telefóno</th>
+                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                     <tr>
+                        <td class="text-muted"></td>
+                        <td class="text-muted"></td>
+                        <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>
