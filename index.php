@@ -11,8 +11,24 @@
 
 <body>
     <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
-        <div class="container w-50">
-            <!--FORM CON: action="Controller/access.php"-->
+        <div class="container w-25">
+            <form class="shadow p-4 rounded border border-primary" action="Controller/access.php" method="POST">
+                <div class="text-center text-primary">
+                    <h3>Log In</h3>
+                    <hr>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label text-secondary">Correo</label>
+                    <input type="email" class="form-control " name="email" placeholder="Ingrese su correo electrónico">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label text-secondary">Contraseña</label>
+                    <input type="password" class="form-control " name="password" placeholder="Ingrese su contraseña">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary" name="submit">Ingresar</button>
+                </div>
+            </form>
         </div>
     </div>
 
