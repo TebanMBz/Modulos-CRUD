@@ -25,9 +25,18 @@
                     <label for="password" class="form-label text-secondary">Contraseña</label>
                     <input type="password" class="form-control " name="password" placeholder="Ingrese su contraseña">
                 </div>
-                <div class="d-grid">
+                <div class="d-grid mb-4">
                     <button type="submit" class="btn btn-primary" name="submit">Ingresar</button>
                 </div>
+                <?php
+                error_reporting(0);
+
+                if ($_GET['id'] == 1) {
+                    echo '<div class="alert alert-danger" role="alert">
+                   Los datos de acceso son invalidos
+                  </div>';
+                }
+                ?>
             </form>
         </div>
     </div>
