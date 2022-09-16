@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Rol</title>
+    <title>Agregar Rol</title>
     <link rel="stylesheet" href="../../../Views/Assets/Bootstrap/css/bootstrap.min.css">
 </head>
 
@@ -21,9 +21,9 @@
             <div class="container w-25">
 
                 <!--FORM-->
-                <form class="shadow p-4 rounded border border-primary" action="editarRol.php" method="POST">
+                <form class="shadow p-4 rounded border border-primary" action="agregarRol.php" method="POST">
                     <div class="text-center text-primary">
-                        <h4>Editar Roles</h4>
+                        <h4>Agregar Roles</h4>
                         <hr>
                     </div>
                     <div class="form-group mb-3">
@@ -39,7 +39,7 @@
                         </select>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary" name="submit">Editar</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Agregar</button>
                     </div>
                 </form>
             </div>

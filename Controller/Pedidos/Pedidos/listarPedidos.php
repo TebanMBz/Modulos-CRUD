@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-end pt-3">
-            <div class="text-muted me-2">
+            <div class="text-primary me-2">
                 <h5 class="mb-1">Regresar</h5>
             </div>
             <a href="../../../Views/moduloPedidos.php"><img src="../../../Views/Assets/img/regresar.png" width="40px" alt="regresar"></a>
