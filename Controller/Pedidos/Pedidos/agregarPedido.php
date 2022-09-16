@@ -43,10 +43,10 @@
                         </div>
                         <div class="col-5 form-group">
                             <label for="cuotas" class="form-label text-secondary">Cuotas</label>
-                            <input type="number" name="cuotas" class="form-control" placeholder="Ingrese la cantidad de cuotas">
+                            <input type="number" name="cuotas" class="form-control" placeholder="Ingrese las cuotas">
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-4">
                         <div class="col-7 form-group">
                             <label for="id_Cliente" class="form-label text-secondary">Cliente</label>
                             <div class="input-group">
@@ -70,6 +70,9 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" name="submit">Agregar</button>
                     </div>
                 </form>
                 <!--CIERRE FORM-->

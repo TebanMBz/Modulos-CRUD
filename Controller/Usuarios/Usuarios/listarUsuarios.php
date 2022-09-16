@@ -27,7 +27,7 @@
                     <tr class="text-center">
                         <th>ID</th>
                         <th>Correo</th>
-                        <th>Constraseña</th>
+                        <th>Contraseña</th>
                         <th>Estado</th>
                         <th>ID_Rol</th>
                         <th>Editar</th>
@@ -43,12 +43,6 @@
                         <td class="text-muted text-center"><a href="eliminarUsuario.php"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
                     </tr>
                 </table>
-                <div class="d-flex align-items-center justify-content-end">
-                    <div class="text-primary me-2">
-                        <h5 class="mb-0">Añadir usuario</h5>
-                    </div>
-                    <a href="agregarUsuario.php"><img src="../../../Views/Assets/img/agregar.png" width="40px" alt="agregar"></a>
-                </div>
             </div>
         </div>
     </div>
