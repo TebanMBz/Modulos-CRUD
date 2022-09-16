@@ -27,18 +27,14 @@
                     <tr class="text-center">
                         <th>ID_Pedido</th>
                         <th>ID_Cliente</th>
-                        <th>ID_Abono</th>
-                        <th>Cantidad_Abonos</th>
                         <th>ID_Paquete</th>
-                        <th>ID_Beneficiario</th>
-                        <th>Costo_Total</th>
+                        <th>Cuotas</th>
                         <th>Estado</th>
+                        <th>Costo_Total</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                     <tr>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>
                         <td class="text-muted"></td>

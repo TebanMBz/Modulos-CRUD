@@ -30,7 +30,7 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Documento</th>
-                        <th>Rol</th>
+                        <th>Teléfono</th>
                         <th>Estado</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
