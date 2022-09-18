@@ -20,32 +20,62 @@
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
             <div class="container w-50">
 
-                <!--FORMULARIO-->
-                <form class=" shadow p-4 rounded border border-primary" action="agregarPaquete.php" method="POST">
+
+                <!--FORM-->
+                <form class="shadow p-4 rounded border border-primary" action="agregarAbono.php" method="POST">
                     <div class="text-center text-primary">
-                        <h3>Agregar Abono</h3>
+                        <h4>Agregar Abono</h4>
                         <hr>
                     </div>
-                    <div>
-                        <div class="mb-4">
-                            <label for="monto" class="form-label text-secondary">Monto</label>
-                            <input type="text" class="form-control " name="monto" placeholder="Ingrese el monto del abono">
+                    <div class="row mb-3">
+                        <div class="col form-group">
+                            <label for="id_Pedido" class="form-label text-secondary">Pedido</label>
+                            <div class="input-group">
+                                <label for="id_Pedido" class="input-group-text">Pedidos</label>
+                                <select name="id_Pedido" class="form-select text-secondary">
+                                    <option selected disabled>Selecciona el pedido</option>
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <label for="imagen" class="form-label text-secondary">Imagen</label>
-                            <input type="file" class="form-control " name="imagen" placeholder="Seleccione un archivo">
+                        <div class="col form-group">
+                            <label for="monto" class="form-label">Monto</label>
+                            <input type="number" name="monto" class="form-control" placeholder="Ingresa el monto a bonar">
                         </div>
                     </div>
-                    <select class="mb-4 form-select" aria-label="Default select example">
-                        <option selected value="1">Revisión</option>
-                        <option value="2">Aceptado</option>
-                        <option value="3">Rechazado</option>
-                    </select>
+                    <div class="form-group mb-3">
+                        <label for="img_Abono" class="form-label text-secondary">Comprobante</label>
+                        <input type="file" class="form-control" name="img_Abono">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col form-group">
+                            <label for="fecha" class="form-label text-secondary">Fecha Actual</label>
+                            <input type="date" name="fecha" class="form-control text-secondary">
+                        </div>
+                        <div class="col form-group">
+                            <label for="estado" class="form-label text-secondary">Estado</label>
+                            <div class="input-group">
+                                <label for="estado" class="input-group-text">Estados</label>
+                                <select name="estado" class="form-select text-secondary">
+                                    <option selected disabled>Seleciona un Estado</option>
+                                    <option value="1">Habilitado</option>
+                                    <option value="2">Inhbilitado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary" name="submit">Agregar</button>
                     </div>
                 </form>
-                <!--CIERRE FORMULARIO-->
+
+
+                <!--CIERRE FORM-->
+
+
             </div>
         </div>
     </div>

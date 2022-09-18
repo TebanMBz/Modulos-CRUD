@@ -40,7 +40,7 @@
             </form>
         </div>
     </div>
-
+    
     <script src="Views/Assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 

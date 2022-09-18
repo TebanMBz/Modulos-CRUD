@@ -18,9 +18,12 @@ if($usuario['correo']== $email && $usuario['contrasena'] == $password){
 header('location:../Views/moduloUsuarios.php');
 } else {
 header('location:../index.php?id=1');
-
 }
     }
+<<<<<<< HEAD
 }
 
 
+=======
+}
+>>>>>>> main
