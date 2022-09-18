@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 session_start();
 require '../Model/bd.php';
@@ -24,5 +23,4 @@ header('location:../index.php?id=1');
     }
 }
 
-=======
->>>>>>> main
+
