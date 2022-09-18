@@ -26,13 +26,13 @@ CREATE TABLE `abonos` (
   `id_abono` int(11) NOT NULL AUTO_INCREMENT,
   `id_pedido` int(11) NOT NULL,
   `monto` float NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `img` blob NOT NULL,
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`id_abono`),
   KEY `id_pedido` (`id_pedido`),
   CONSTRAINT `abonos_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,7 +58,7 @@ CREATE TABLE `beneficiarios` (
   `apellido` varchar(50) NOT NULL,
   `documento` varchar(20) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `telefono` int(12) NOT NULL,
+  `telefono` varchar(12) NOT NULL,
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`id_beneficiario`),
   KEY `id_pedido` (`id_pedido`),
@@ -89,7 +89,7 @@ CREATE TABLE `clientes` (
   `apellido` varchar(50) NOT NULL,
   `documento` varchar(20) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `telefono` int(12) NOT NULL,
+  `telefono` varchar(12) NOT NULL,
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`id_cliente`),
   KEY `id_usuario` (`id_usuario`),
@@ -119,8 +119,8 @@ CREATE TABLE `empleados` (
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `documento` varchar(20) NOT NULL,
-  `estado` int(11) NOT NULL,
-  `telefono` int(12) NOT NULL,
+  `telefono` varchar(12) NOT NULL,
+  `estado` int(12) NOT NULL,
   PRIMARY KEY (`id_empleado`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
@@ -266,4 +266,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-15 20:34:16
+-- Dump completed on 2022-09-18 11:39:51
