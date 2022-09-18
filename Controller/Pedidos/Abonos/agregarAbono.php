@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +19,7 @@
         </div>
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
             <div class="container w-50">
+
 
                 <!--FORM-->
                 <form class="shadow p-4 rounded border border-primary" action="agregarAbono.php" method="POST">
@@ -68,11 +66,15 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary" name="submit">Agregar</button>
                     </div>
                 </form>
+
+
                 <!--CIERRE FORM-->
+
 
             </div>
         </div>

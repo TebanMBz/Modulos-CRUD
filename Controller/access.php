@@ -20,4 +20,10 @@ header('location:../Views/moduloUsuarios.php');
 header('location:../index.php?id=1');
 }
     }
+<<<<<<< HEAD
 }
+
+
+=======
+}
+>>>>>>> main
