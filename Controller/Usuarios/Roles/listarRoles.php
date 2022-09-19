@@ -39,6 +39,12 @@
                         <td class="text-muted text-center"><a href="eliminarRol.php"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
                     </tr>
                 </table>
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="text-primary me-2">
+                        <h5 class="mb-0">Añadir roles</h5>
+                    </div>
+                    <a href="agregarRol.php"><img src="../../../Views/Assets/img/agregar.png" width="40px" alt="agregar"></a>
+                </div>
             </div>
         </div>
     </div>
