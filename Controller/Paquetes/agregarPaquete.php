@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
     
 
        if ($resultado){
-              $bandera=true;
+              header("Location:listarPaquetes.php");
        }
        
 }
