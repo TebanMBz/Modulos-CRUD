@@ -7,14 +7,12 @@ require '../../Model/bd.php';
     $query=$connection->prepare("SELECT * FROM paquetes");
     $query->execute();
     $paquetes=$query->fetchAll(PDO::FETCH_ASSOC);
- 
-    // foreach($libros as $key=>$libro){
-    //     echo $libro["titulo"];
-    //     echo $libro["autor"];
-    //     echo $libro["ano"];
-    //     echo $libro["ano"];
-    // }
-?>
+
+    $query=$connection->prepare("SELECT * FROM empleados ORDER BY nombre");
+    $query->execute();
+    $empleados=$query->fetchAll(PDO::FETCH_ASSOC);
+    
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +64,7 @@ require '../../Model/bd.php';
                             <div class="col row">
                                 <div class="col-1 p-0 text-center mt-2">
                                     <div class="mb-3">
-                                        <a href="editarPaquete.php?id_paquete=<?php echo $paquetes["id_paquete"]?>"
+                                        <a href="editarPaquete.php?id_paquete= <?php echo $paquetes["id_paquete"]?>"
                                             type="button" class=" btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"><img src="../../Views/Assets/img/editar.png"
                                                 width="30px" alt="editar"></a>
@@ -96,9 +94,13 @@ require '../../Model/bd.php';
     <script src="../../Views/Assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-
+                    
 
     <!-- Modal -->
+
+    <?php
+        $id = 
+    ?>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width: 950px !important;">
             <div class="modal-content">
@@ -108,7 +110,7 @@ require '../../Model/bd.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class=" shadow p-4 rounded border border-primary" action="editarPaquete.php" method="POST">
+                    <form class=" shadow p-4 rounded border border-primary" action="editarPaquete.php" method="POST" enctype = "multipart/form-data">
                         <div class="text-center text-primary">
                             <h3>Editar Paquete</h3>
                             <hr>
@@ -176,7 +178,10 @@ require '../../Model/bd.php';
                                     <label for="id_empleado" class="input-group-text">Guías Turístico</label>
                                     <select name="id_empleado" class="form-select">
                                         <option selected disabled>Selecciona un Guía Turístico</option>
-                                        <option value="1">Carlitos</option>
+                                        <?php foreach($empleados as $key=>$empleados){ ?>
+                                            <option value="<?php echo $empleados["id_empleado"] ?>"><?php echo $empleados["nombre"] ?></option>
+                                        <?php } ?>
+                                </select>
                                     </select>
                                 </div>
                             </div>
