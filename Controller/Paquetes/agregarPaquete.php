@@ -21,15 +21,13 @@ if(isset($_POST['submit'])){
     $descripcion = $_POST['descripcion'];
 
 
-    $img_url=$_FILES['img_url']['name'];
-    $archivo=$_FILES['img_url']['tmp_name'];
-    $ruta="fotosPaquetes";
-
-$ruta=$ruta."/".$img_url;
-
-    move_uploaded_file($archivo,$ruta);
-
     
+    $img_url = $_FILES['img_url']['name'];
+    $archivo = $_FILES['img_url']['tmp_name'];
+    $ruta = "fotosPaquetes";
+    $ruta =  $ruta.'/'. $img_url;
+
+     move_uploaded_file($archivo, $ruta);
 
     $consulta  = $connection -> prepare("INSERT INTO `paquetes` (`id_paquete`, `id_empleado`, `nombre`, `destino`, `descripcion`, `estado`, `lugar_encuentro`, `fecha_partida`, `fecha_regreso`, `img_url`, `cupos`, `precio_adulto`, `precio_nino`)
     VALUES (' ',  :id_empleado, :nombre, :destino, :descripcion, :estado, :lugar_encuentro, :fec_Partida, :fec_Regreso, :ruta, :cupos, :precio_adulto, :precio_nino)");
@@ -45,7 +43,7 @@ $ruta=$ruta."/".$img_url;
               'lugar_encuentro'=>$lugar_encuentro,
               'fec_Partida'=>$fec_Partida,
               'fec_Regreso'=>$fec_Regreso,
-              'img_url' => $ruta,
+              'ruta' => $ruta,
               'cupos' => $cupos,
               'precio_adulto'=>$precio_adulto,
               'precio_nino'=>$precio_nino
@@ -60,7 +58,13 @@ $ruta=$ruta."/".$img_url;
        }
        
 }
+
+$query=$connection->prepare("SELECT * FROM empleados ORDER BY nombre");
+    $query->execute();
+    $empleados=$query->fetchAll(PDO::FETCH_ASSOC);
+    
 ?>
+
 
 
 <!DOCTYPE html>
@@ -72,6 +76,7 @@ $ruta=$ruta."/".$img_url;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Paquete</title>
     <link rel="stylesheet" href="../../Views/Assets/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -86,7 +91,7 @@ $ruta=$ruta."/".$img_url;
             <div class="container w-75">
 
                 <!--FORMULARIO-->
-                <form class=" shadow p-4 rounded border border-primary" action="agregarPaquete.php" method="POST">
+                <form class=" shadow p-4 rounded border border-primary" action="agregarPaquete.php" method="POST" enctype = "multipart/form-data">
                     <div class="text-center text-primary">
                         <h3>Agregar Paquete</h3>
                         <hr>
@@ -141,13 +146,16 @@ $ruta=$ruta."/".$img_url;
                     <div class="row mb-3">
                         <div class="col form-group">
                             <label for="id_empleado" class="form-label text-secondary">Guía Turístico</label>
+                            
+                        
                             <div class="input-group">
                                 <label for="id_empleado" class="input-group-text">Guías Turístico</label>
                                 <select name="id_empleado" class="form-select">
                                     <option selected disabled>Selecciona un Guía Turístico</option>
-                                    <option value="1"><?php ?></option>
-                                    <option value="2"><?php ?></option>
-                                    <option value="3"><?php ?></option>
+                                    
+                                <?php foreach($empleados as $key=>$empleados){ ?>
+                                    <option value="<?php echo $empleados["id_empleado"] ?>"><?php echo $empleados["nombre"] ?></option>
+                                <?php } ?>
                                 </select>
                             </div>
                         </div>
