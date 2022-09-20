@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
     $img_url = $_FILES['img_url']['name'];
     $archivo = $_FILES['img_url']['tmp_name'];
     $ruta = "fotosPaquetes";
-     $ruta =  $ruta.'/'. $img_url;
+    $ruta =  $ruta.'/'. $img_url;
 
      move_uploaded_file($archivo, $ruta);
 
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
               'lugar_encuentro'=>$lugar_encuentro,
               'fec_Partida'=>$fec_Partida,
               'fec_Regreso'=>$fec_Regreso,
-              'img_url' => $img_url,
+              'ruta' => $ruta,
               'cupos' => $cupos,
               'precio_adulto'=>$precio_adulto,
               'precio_nino'=>$precio_nino
@@ -58,7 +58,13 @@ if(isset($_POST['submit'])){
        }
        
 }
+
+$query=$connection->prepare("SELECT * FROM empleados ORDER BY nombre");
+    $query->execute();
+    $empleados=$query->fetchAll(PDO::FETCH_ASSOC);
+    
 ?>
+
 
 
 <!DOCTYPE html>
@@ -140,13 +146,16 @@ if(isset($_POST['submit'])){
                     <div class="row mb-3">
                         <div class="col form-group">
                             <label for="id_empleado" class="form-label text-secondary">Guía Turístico</label>
+                            
+                        
                             <div class="input-group">
                                 <label for="id_empleado" class="input-group-text">Guías Turístico</label>
                                 <select name="id_empleado" class="form-select">
                                     <option selected disabled>Selecciona un Guía Turístico</option>
-                                    <option value="1"><?php ?>1</option>
-                                    <option value="2"><?php ?>2</option>
-                                    <option value="3"><?php ?>3</option>
+                                    
+                                <?php foreach($empleados as $key=>$empleados){ ?>
+                                    <option value="<?php echo $empleados["id_empleado"] ?>"><?php echo $empleados["nombre"] ?></option>
+                                <?php } ?>
                                 </select>
                             </div>
                         </div>
