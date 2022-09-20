@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
             'estado' => $estado
         ]
     );
-    if ($resultado) {
+    if ($abonos) {
         header("Location:listarBeneficiarios.php");
     }
 }
