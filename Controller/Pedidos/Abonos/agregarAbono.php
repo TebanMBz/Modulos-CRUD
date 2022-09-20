@@ -1,3 +1,40 @@
+<?php
+require '../../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$consulta = $connection->prepare("SELECT id_pedido FROM pedidos");
+$consulta->execute();
+$pedidos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_POST['submit'])) {
+    $id_pedido = $_POST['id_pedido'];
+    $monto = $_POST['monto'];
+    $img = addslashes($_FILES['img']['tmp_name']);
+    $estado = $_POST['estado'];
+
+    $query = $connection->prepare("INSERT INTO abonos (id_abono, id_pedido, monto,fecha,img, estado)
+    VALUES (NULL,:id_pedido,:monto,NULL,:img,:estado)");
+
+
+    $abonos = $query->execute(
+        [
+            'id_pedido' => $id_pedido,
+            'monto' => $monto,
+            'img' => $img,
+            'estado' => $estado
+        ]
+    );
+    if ($resultado) {
+        header("Location:listarBeneficiarios.php");
+    }
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,62 +57,40 @@
         <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
             <div class="container w-50">
 
-
-                <!--FORM-->
-                <form class="shadow p-4 rounded border border-primary" action="agregarAbono.php" method="POST">
+                <!--FORMULARIO-->
+                <form class=" shadow p-4 rounded border border-primary" action="agregarAbono.php" method="POST" enctype="multipart/form-data">
                     <div class="text-center text-primary">
-                        <h4>Agregar Abono</h4>
+                        <h3>Agregar Abono</h3>
                         <hr>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col form-group">
-                            <label for="id_Pedido" class="form-label text-secondary">Pedido</label>
-                            <div class="input-group">
-                                <label for="id_Pedido" class="input-group-text">Pedidos</label>
-                                <select name="id_Pedido" class="form-select text-secondary">
-                                    <option selected disabled>Selecciona el pedido</option>
-                                    <option value="1"></option>
-                                    <option value="2"></option>
-                                    <option value="3"></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col form-group">
-                            <label for="monto" class="form-label">Monto</label>
-                            <input type="number" name="monto" class="form-control" placeholder="Ingresa el monto a bonar">
-                        </div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="img_Abono" class="form-label text-secondary">Comprobante</label>
-                        <input type="file" class="form-control" name="img_Abono">
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col form-group">
-                            <label for="fecha" class="form-label text-secondary">Fecha Actual</label>
-                            <input type="date" name="fecha" class="form-control text-secondary">
-                        </div>
-                        <div class="col form-group">
-                            <label for="estado" class="form-label text-secondary">Estado</label>
-                            <div class="input-group">
-                                <label for="estado" class="input-group-text">Estados</label>
-                                <select name="estado" class="form-select text-secondary">
-                                    <option selected disabled>Seleciona un Estado</option>
-                                    <option value="1">Habilitado</option>
-                                    <option value="2">Inhbilitado</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <div>
+                        <label for="imagen" class="form-label text-secondary">Id Pedido</label>
+                        <select name="id_pedido" class="mb-4 form-select" aria-label="Default select example">
+                            <?php foreach ($pedidos as $opciones) {
+                                echo '<option value="' . $opciones['id_pedido'] . '">' . $opciones['id_pedido'] . '</option>';
+                            } ?>
 
+                        </select>
+                        <div class="mb-4">
+                            <label for="monto" class="form-label text-secondary">Monto</label>
+                            <input type="text" class="form-control " name="monto" placeholder="Ingrese el monto del abono">
+                        </div>
+                        <div class="mb-4">
+                            <label for="imagen" class="form-label text-secondary">Imagen</label>
+                            <input type="file" class="form-control " name="img" placeholder="Seleccione un archivo">
+                        </div>
+                    </div>
+                    <label for="estado" class="form-label text-secondary">Estado</label>
+                    <select name="estado" class="mb-4 form-select" aria-label="Default select example">
+                        <option selected value="1">Revisión</option>
+                        <option value="2">Aceptado</option>
+                        <option value="3">Rechazado</option>
+                    </select>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary" name="submit">Agregar</button>
                     </div>
                 </form>
-
-
-                <!--CIERRE FORM-->
-
-
+                <!--CIERRE FORMULARIO-->
             </div>
         </div>
     </div>
