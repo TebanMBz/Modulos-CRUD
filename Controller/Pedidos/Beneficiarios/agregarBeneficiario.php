@@ -11,7 +11,9 @@ if (isset($_POST['submit'])) {
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
     $telefono = $_POST['telefono'];
     $estado = $_POST['estado'];
-    $consulta = $connection->prepare("INSERT INTO `beneficiarios` (`id_beneficiario`, `id_pedido`, `nombre`, `apellido`, `documento`, `fecha_nacimiento`, `telefono`, `estado`) VALUES (' ', '1', 'Juan', 'Muñoz', '1023626332', '2005-05-02', '3123', '1'");
+    $consulta = $connection->prepare("INSERT INTO beneficiarios (id_beneficiario, id_pedido, nombre, apellido, 
+    documento, fecha_nacimiento, telefono, estado) VALUES (' ', :id_pedido, :nombre, :apellido, :documento,
+     :fecha_nacimiento, :telefono, :estado)");
     $resultado = $consulta->execute(
         [
             'id_pedido' => $id_pedido,
