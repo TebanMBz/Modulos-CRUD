@@ -98,9 +98,6 @@ require '../../Model/bd.php';
 
     <!-- Modal -->
 
-    <?php
-        $id = 
-    ?>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width: 950px !important;">
             <div class="modal-content">
