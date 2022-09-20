@@ -10,3 +10,4 @@ $resultado = $consulta->execute([$id_abono]);
 
 if($resultado){
     header("Location:listarAbonos.php");
+}

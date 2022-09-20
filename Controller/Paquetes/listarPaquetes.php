@@ -35,7 +35,7 @@ require '../../Model/bd.php';
             <a href="../../Views/moduloPaquetes.php"><img src="../../Views/Assets/img/regresar.png" width="40px"
                     alt="regresar"></a>
         </div>
-        <div class="container-fluid d-flex justify-content-center align-items-center">
+        <div class="container-fluid mt-5 d-flex justify-content-center align-items-center">
             <div class="container-fluid border border-primary p-3">
                 <div class="text-center text-primary mb-3">
                     <h3>INFORMACIÓN PAQUETES</h3>
