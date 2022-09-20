@@ -81,11 +81,8 @@ if (isset($_POST['id_paquete'])) {
 
 
     if($resultado) {
-        $bandera = true;
+        header("Location:listarPaquetes.php");
     }
-    
-    echo "<center><h1>AGREGADO CON EXITO PAI</h1></center>";
-    echo "<a href='listarPaquetes.php'>Vamo</a>";
 }
     
 
