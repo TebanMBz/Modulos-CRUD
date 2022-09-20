@@ -11,9 +11,6 @@ require '../../Model/bd.php';
         $result= $consulta->execute([$id]);
 
         if($result){
-            echo "<h2>Registro eliminado</h2>";
-        }else{
-            echo "<h2>Error al eliminar</h2>";
+            header("Location:listarPaquetes.php");
         }
-        echo "<a href='listarPaquetes.php'>Regresar</a>";
 ?>
