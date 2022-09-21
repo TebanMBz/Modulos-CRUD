@@ -1,5 +1,45 @@
 <?php
+require '../../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$queryRol = $connection->prepare("SELECT * FROM roles WHERE id_rol != 3");
+$queryRol->execute();
+$roles = $queryRol->fetchAll(PDO::FETCH_ASSOC);
+
+
+if (isset($_POST['submit'])) {
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $documento = $_POST['documento'];
+    $telefono = $_POST['telefono'];
+    $id_rol = $_POST['id_rol'];
+    $correo = $_POST['correo'];
+    $contrasena = $_POST['contrasena'];
+
+
+    $query = $connection->prepare("INSERT INTO usuarios (correo, contrasena, estado,id_rol) VALUES (:correo, :contrasena, 1, :id_rol)");
+    $query->execute(['correo' => $correo, 'contrasena' => $contrasena, 'id_rol' => $id_rol]);
+
+    $query2 = $connection->prepare("SELECT id_usuario FROM usuarios WHERE correo=:correo");
+    $query2->execute(['correo' => $correo]);
+    $usuario = $query2->fetch(PDO::FETCH_ASSOC);
+
+    $query3 = $connection->prepare("INSERT INTO empleados (id_empleado, id_usuario, nombre, apellido, documento, telefono, estado)
+     VALUES (NULL, :id_usuario, :nombre, :apellido, :documento, :telefono, 1)");
+    $query3->execute([
+        'id_usuario' => $usuario['id_usuario'], 'nombre' => $nombre,
+        'apellido' => $apellido, 'documento' => $documento,
+        'telefono' => $telefono
+    ]);
+
+
+    header("location: listarEmpleados.php");
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,11 +91,12 @@
                     <div class="form-group mb-3">
                         <label for="id_Rol" class="form-label text-secondary">Rol</label>
                         <div class="input-group">
-                            <label for="id_Rol" class="input-group-text">Roles</label>
-                            <select name="id_Rol" class="form-select text-secondary">
+                            <label for="id_rol" class="input-group-text">Roles</label>
+                            <select name="id_rol" class="form-select text-secondary">
                                 <option selected disabled>Seleccione el rol</option>
-                                <option value="1"></option>
-                                <option value="2"></option>
+                                <?php foreach ($roles as $key => $rol) {
+                                    echo '<option value="' . $rol['id_rol'] . '">' . $rol['nombre'] . '</option>';
+                                } ?>
                             </select>
                         </div>
                     </div>
@@ -65,8 +106,8 @@
                             <input type="email" name="correo" class="form-control text-secondary" placeholder="Ingrese su correo electrónico">
                         </div>
                         <div class="col form-group">
-                            <label for="contraseña" class="form-label text-secondary">Contraseña</label>
-                            <input type="password" name="contraseña" class="form-control text-secondary" placeholder="Ingrese su contraseña">
+                            <label for="contrasena" class="form-label text-secondary">Contraseña</label>
+                            <input type="password" name="contrasena" class="form-control text-secondary" placeholder="Ingrese su contraseña">
                         </div>
                     </div>
                     <div class="d-grid">
