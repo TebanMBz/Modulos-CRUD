@@ -1,3 +1,14 @@
+<?php
+require '../../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$query = $connection->prepare("SELECT * FROM empleados");
+$query->execute();
+$empleados = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,16 +45,20 @@
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
-                    <tr>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted text-center"><a href="editarEmpleado.php"><img src="../../../Views/Assets/img/editar.png" width="25px" alt="editar"></a></td>
-                        <td class="text-muted text-center"><a href="eliminarEmpleado.php"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
-                    </tr>
+                    <?php
+                    foreach ($empleados as $key => $empleado) {
+                        echo    '<tr>
+                        <td class="text-muted">' . $empleado['id_empleado'] . '</td>
+                        <td class="text-muted">' . $empleado['id_usuario'] . '</td>
+                        <td class="text-muted">' . $empleado['nombre'] . '</td>
+                        <td class="text-muted">' . $empleado['apellido'] . '</td>
+                        <td class="text-muted">' . $empleado['documento'] . '</td>
+                        <td class="text-muted">' . $empleado['telefono'] . '</td>
+                        <td class="text-muted text-center"><a href="editarEmpleado.php?idGet=' . $empleado['id_empleado'] . '"><img src="../../../Views/Assets/img/editar.png" width="25px" alt="editar"></a></td>
+                        <td class="text-muted text-center"><a href="eliminarEmpleado.php?idGet=' . $empleado['id_empleado'] . '"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
+                    </tr>';
+                    }
+                    ?>
                 </table>
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="text-primary me-2">
