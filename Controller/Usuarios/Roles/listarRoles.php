@@ -1,3 +1,14 @@
+<?php
+require '../../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$query = $connection->prepare("SELECT * FROM roles");
+$query->execute();
+$roles = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,23 +39,18 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Estado</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
                     </tr>
-                    <tr>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted text-center"><a href="editarRol.php"><img src="../../../Views/Assets/img/editar.png" width="25px" alt="editar"></a></td>
-                        <td class="text-muted text-center"><a href="eliminarRol.php"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
-                    </tr>
+                    <?php
+                    foreach ($roles as $key => $rol) {
+                        echo    '<tr>
+                        <td class="text-muted">' . $rol['id_rol'] . '</td>
+                        <td class="text-muted">' . $rol['nombre'] . '</td>
+                        <td class="text-muted">' . $rol['estado'] . '</td>
+                        </tr>';
+                    }
+                    ?>
+
                 </table>
-                <div class="d-flex align-items-center justify-content-end">
-                    <div class="text-primary me-2">
-                        <h5 class="mb-0">Añadir roles</h5>
-                    </div>
-                    <a href="agregarRol.php"><img src="../../../Views/Assets/img/agregar.png" width="40px" alt="agregar"></a>
-                </div>
             </div>
         </div>
     </div>

@@ -1,3 +1,14 @@
+<?php
+require '../../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$query = $connection->prepare("SELECT * FROM clientes");
+$query->execute();
+$clientes = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,17 +46,21 @@
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
-                    <tr>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted text-center"><a href="editarCliente.php"><img src="../../../Views/Assets/img/editar.png" width="25px" alt="editar"></a></td>
-                        <td class="text-muted text-center"><a href="eliminarCliente.php"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
-                    </tr>
+                    <?php
+                    foreach ($clientes as $key => $cliente) {
+                        echo    '<tr>
+                        <td class="text-muted">' . $cliente['id_cliente'] . '</td>
+                        <td class="text-muted">' . $cliente['id_usuario'] . '</td>
+                        <td class="text-muted">' . $cliente['nombre'] . '</td>
+                        <td class="text-muted">' . $cliente['apellido'] . '</td>
+                        <td class="text-muted">' . $cliente['documento'] . '</td>
+                        <td class="text-muted">' . $cliente['fecha_nacimiento'] . '</td>
+                        <td class="text-muted">' . $cliente['telefono'] . '</td>
+                        <td class="text-muted text-center"><a href="editarCliente.php?idGet=' . $cliente['id_cliente'] . '"><img src="../../../Views/Assets/img/editar.png" width="25px" alt="editar"></a></td>
+                        <td class="text-muted text-center"><a href="eliminarCliente.php?idGet=' . $cliente['id_cliente'] . '"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
+                    </tr>';
+                    }
+                    ?>
                 </table>
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="text-primary me-2">

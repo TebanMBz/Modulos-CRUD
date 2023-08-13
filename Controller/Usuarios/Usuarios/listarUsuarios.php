@@ -1,3 +1,14 @@
+<?php
+require '../../../Model/bd.php';
+
+$db = new Database();
+$connection = $db->connect();
+
+$query = $connection->prepare("SELECT * FROM usuarios");
+$query->execute();
+$usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,18 +41,18 @@
                         <th>Contraseña</th>
                         <th>Estado</th>
                         <th>ID_Rol</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
                     </tr>
-                    <tr>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted"></td>
-                        <td class="text-muted text-center"><a href="editarUsuario.php"><img src="../../../Views/Assets/img/editar.png" width="25px" alt="editar"></a></td>
-                        <td class="text-muted text-center"><a href="eliminarUsuario.php"><img src="../../../Views/Assets/img/eliminar.png" width="25px" alt="eliminar"></a></td>
-                    </tr>
+                    <?php
+                    foreach ($usuarios as $key => $usuario) {
+                        echo    '<tr>
+                        <td class="text-muted">' . $usuario['id_usuario'] . '</td>
+                        <td class="text-muted">' . $usuario['correo'] . '</td>
+                        <td class="text-muted">' . $usuario['contrasena'] . '</td>
+                        <td class="text-muted">' . $usuario['estado'] . '</td>
+                        <td class="text-muted">' . $usuario['id_rol'] . '</td>
+                    </tr>';
+                    }
+                    ?>
                 </table>
             </div>
         </div>
